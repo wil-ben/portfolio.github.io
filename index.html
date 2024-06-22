@@ -3,27 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <title>Portfolio</title>
+    <script>
+        function showCV() {
+            // Charger le fichier XML
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', 'cv.xml', true);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    var xml = xhr.responseXML;
+                    // Charger le fichier XSL
+                    var xsl = new XMLHttpRequest();
+                    xsl.open('GET', 'cv.xsl', true);
+                    xsl.onreadystatechange = function () {
+                        if (xsl.readyState == 4 && xsl.status == 200) {
+                            var xslDoc = xsl.responseXML;
+                            // Transformer le XML avec XSL
+                            var xsltProcessor = new XSLTProcessor();
+                            xsltProcessor.importStylesheet(xslDoc);
+                            var resultDocument = xsltProcessor.transformToFragment(xml, document);
+                            // Afficher le résultat
+                            document.getElementById('cv-container').appendChild(resultDocument);
+                        }
+                    };
+                    xsl.send();
+                }
+            };
+            xhr.send();
+        }
+    </script>
 </head>
 <body>
     <p>Hello World</p>
-    <button onclick="showNewPage()">Afficher Nouvelle Page</button>
-
-    <script>
-        function showNewPage() {
-            var newWindow = window.open("", "newWindow", "width=800,height=600");
-            newWindow.document.write(`
-                <!DOCTYPE html>
-                <html lang="fr">
-                <head>
-                    <meta charset="UTF-8">
-                    <title>Nouvelle Page</title>
-                </head>
-                <body>
-                    <p>Bonjour tout le monde</p>
-                </body>
-                </html>
-            `);
-        }
-    </script>
+    <button onclick="showCV()">Afficher le CV</button>
+    <div id="cv-container"></div>
 </body>
 </html>
