@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CV>
+    <InformationPersonnelle>
+        <Nom>Wilhan Benrejdal</Nom>
+        <Telephone>07 83 99 68 74</Telephone>
+        <Email>w.benrejdal@gmail.com</Email>
+        <Age>21 ans</Age>
+        <Adresse>Aulnay-Sous-Bois (93600)</Adresse>
+        <Permis>Permis B</Permis>
+    </InformationPersonnelle>
+    <Objectif>
+        <Titre>Ingénieur DevOps en alternance</Titre>
+        <Contrat>Contrat en apprentissage de 24 mois</Contrat>
+        <Rythme>1 mois école / 1 mois entreprise</Rythme>
+        <Disponibilite>Disponible dès septembre 2023</Disponibilite>
+    </Objectif>
+    <ExperiencesProfessionnelles>
+        <Experience>
+            <Poste>Préparateur de commandes</Poste>
+            <Entreprise>COMME des GARÇONS</Entreprise>
+            <TypeContrat>Intérim</TypeContrat>
+            <Dates>07/2022 - 08/2022</Dates>
+            <Taches>Gestion des stocks, Prélèvements des produits et constitution des colis</Taches>
+        </Experience>
+        <Experience>
+            <Poste>Technicien</Poste>
+            <Entreprise>Clim Energy System, Paris</Entreprise>
+            <TypeContrat>CDD</TypeContrat>
+            <Dates>07/2021 - 08/2021</Dates>
+            <Taches>Tirage de câbles, Remplacement du matériel usagé</Taches>
+        </Experience>
+        <Experience>
+            <Poste>Superviseur</Poste>
+            <Entreprise>POINT B, Garges-lès-Gonesse</Entreprise>
+            <TypeContrat>CDD</TypeContrat>
+            <Dates>08/2020 - 06/2021</Dates>
+            <Taches>Prise et préparation des commandes, Contrôle et réception des stocks</Taches>
+        </Experience>
+    </ExperiencesProfessionnelles>
+    <Formation>
+        <Diplome>Ingénieur en informatique</Diplome>
+        <Etablissement>Sup Galilée, Université Sorbonne Paris Nord</Etablissement>
+        <Dates>2022 - 2025</Dates>
+    </Formation>
+    <Formation>
+        <Diplome>Cursus préparatoire d'ingénieur intégré</Diplome>
+        <Etablissement>Sup Galilée, Université Sorbonne Paris Nord</Etablissement>
+        <Dates>2019 - 2022</Dates>
+    </Formation>
+    <Formation>
+        <Diplome>Baccalauréat Scientifique</Diplome>
+        <Etablissement>Lycée Jean Zay</Etablissement>
+        <Dates>2019</Dates>
+    </Formation>
+    <Competences>
+        <HardSkills>Java, HTML, CSS, Python, C, Assembleur, SQL, Matlab, R, Git / Github, Pack Office, Vscode, Oracle, Eclipse, Docker / Kubernetes, UML, Linux</HardSkills>
+        <Langues>
+            <Langue>Anglais (TOEIC 785)</Langue>
+            <Langue>Espagnol (Notions)</Langue>
+        </Langues>
+        <SoftSkills>Bonne communication orale et écrite, Autonomie et rigueur, Capacité d'adaptation, Esprit d'équipe, Prise d'initiative</SoftSkills>
+    </Competences>
+    <Projets>
+        <Projet>Recherche du plus court chemin entre deux stations de métro en langage C</Projet>
+        <Projet>Réalisation d'une architecture logicielle du serveur d'une application (UML)</Projet>
+        <Projet>Simulation informatique d'un écosystème en java, programmation orienté objet</Projet>
+        <Projet>Conception du jeu Mario Kart et de son interface graphique en langage C</Projet>
+        <Projet>Conception d'une interface graphique du jeu Démineur et Mastermind en langage C (gtk)</Projet>
+        <Projet>Site web (HTML 5 / CSS)</Projet>
+    </Projets>
+    <Interets>Jeux vidéos, Ski, Boxe, Piano, Vélo</Interets>
+    <LinkedIn>http://www.linkedin.com/in/wilhan-benrejdal-5529401a9</LinkedIn>
+</CV>
