@@ -1,12 +1,29 @@
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
-  <title>portfolio</title>
+    <meta charset="UTF-8">
+    <title>Portfolio</title>
 </head>
-
 <body>
-  <p>Hello World</p>
-</body>
+    <p>Hello World</p>
+    <button onclick="showNewPage()">Afficher Nouvelle Page</button>
 
+    <script>
+        function showNewPage() {
+            var newWindow = window.open("", "newWindow", "width=800,height=600");
+            newWindow.document.write(`
+                <!DOCTYPE html>
+                <html lang="fr">
+                <head>
+                    <meta charset="UTF-8">
+                    <title>Nouvelle Page</title>
+                </head>
+                <body>
+                    <p>Bonjour tout le monde</p>
+                </body>
+                </html>
+            `);
+        }
+    </script>
+</body>
 </html>
