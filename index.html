@@ -2,27 +2,59 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Portfolio</title>
+    <title>Portfolio de Wilhan Benrejdal</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+        h1 {
+            color: #333;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
     <script>
         function showCV() {
+            // Créer un nouvel élément iframe pour afficher le CV
+            var iframe = document.createElement('iframe');
+            iframe.style.width = '100%';
+            iframe.style.height = '100%';
+            iframe.style.border = 'none';
+
             // Charger le fichier XML
             var xhr = new XMLHttpRequest();
             xhr.open('GET', 'cv_fr.xml', true);
             xhr.onreadystatechange = function () {
                 if (xhr.readyState == 4 && xhr.status == 200) {
                     var xml = xhr.responseXML;
+
                     // Charger le fichier XSL
                     var xsl = new XMLHttpRequest();
                     xsl.open('GET', 'cv_fr.xsl', true);
                     xsl.onreadystatechange = function () {
                         if (xsl.readyState == 4 && xsl.status == 200) {
                             var xslDoc = xsl.responseXML;
+
                             // Transformer le XML avec XSL
-                            var xsltProcessor = new XSLTProcessor();
-                            xsltProcessor.importStylesheet(xslDoc);
-                            var resultDocument = xsltProcessor.transformToFragment(xml, document);
-                            // Afficher le résultat
-                            document.getElementById('cv-container').appendChild(resultDocument);
+                            var processor = new XSLTProcessor();
+                            processor.importStylesheet(xslDoc);
+                            var resultDocument = processor.transformToDocument(xml);
+
+                            // Injecter le document transformé dans l'iframe
+                            iframe.srcdoc = new XMLSerializer().serializeToString(resultDocument);
+                            document.body.appendChild(iframe);
                         }
                     };
                     xsl.send();
@@ -33,8 +65,8 @@
     </script>
 </head>
 <body>
-    <p>Hello World</p>
+    <h1>Portfolio de Wilhan Benrejdal</h1>
+    <p>Bienvenue sur mon portfolio. Cliquez ci-dessous pour afficher mon CV :</p>
     <button onclick="showCV()">Afficher le CV</button>
-    <div id="cv-container"></div>
 </body>
 </html>
