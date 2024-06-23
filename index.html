@@ -134,6 +134,11 @@
                 'en': 'Welcome to my portfolio. Click below to view my CV:',
                 'ja': '私のポートフォリオへようこそ。以下をクリックして私の履歴書をご覧ください。'
             };
+            var buttonText = {
+                'fr': 'Afficher le CV',
+                'en': 'View CV',
+                'ja': '履歴書を見る'
+            };
             document.title = titleText[currentLang];
             document.body.innerHTML = `
                 <div class="container">
@@ -144,7 +149,7 @@
                     </div>
                     <h1>${titleText[currentLang]}</h1>
                     <p>${welcomeText[currentLang]}</p>
-                    <button onclick="showCV()">Afficher le CV</button>
+                    <button onclick="showCV()">${buttonText[currentLang]}</button>
                     <div class="video-container">
                         <iframe id="youtube-video" width="560" height="315" 
                                 src="https://www.youtube.com/embed/arj7oStGLkU?cc_lang_pref=${currentLang}&cc_load_policy=1" 
