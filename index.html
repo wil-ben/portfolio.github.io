@@ -45,6 +45,9 @@
         .video-container {
             margin-top: 20px;
         }
+        iframe {
+            border: none; /* Utilisez le CSS pour supprimer la bordure de l'iframe */
+        }
     </style>
     <script>
         let currentLang = 'fr';
@@ -126,7 +129,7 @@
                 <p>${welcomeText[currentLang]}</p>
                 <button onclick="showCV()">${buttonText[currentLang]}</button>
                 <div class="video-container">
-                    <iframe id="youtube-video" width="560" height="315" src="https://www.youtube.com/embed/arj7oStGLkU?cc_load_policy=1&cc_lang_pref=${subtitleLang[currentLang]}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe id="youtube-video" width="560" height="315" src="https://www.youtube.com/embed/arj7oStGLkU?cc_load_policy=1&cc_lang_pref=${subtitleLang[currentLang]}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
             `;
         }
@@ -163,7 +166,7 @@
     <p>Bienvenue sur mon portfolio. Cliquez ci-dessous pour afficher mon CV :</p>
     <button onclick="showCV()">Afficher le CV</button>
     <div class="video-container">
-        <iframe id="youtube-video" width="560" height="315" src="https://www.youtube.com/embed/arj7oStGLkU?cc_load_policy=1&cc_lang_pref=fr" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <iframe id="youtube-video" width="560" height="315" src="https://www.youtube.com/embed/arj7oStGLkU?cc_load_policy=1&cc_lang_pref=fr" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </div>
 </body>
 </html>
