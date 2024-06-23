@@ -54,11 +54,9 @@
                             // Convertir le résultat en une chaîne de caractères HTML
                             var htmlString = new XMLSerializer().serializeToString(resultDocument);
 
-                            // Ouvrir le résultat dans une nouvelle fenêtre du même onglet
-                            var newWindow = window.open('', '_self');
-                            newWindow.document.write(htmlString);
-                            newWindow.document.title = 'CV de Wilhan Benrejdal';
-                            newWindow.document.close();
+                            // Afficher le résultat dans la même fenêtre de navigation
+                            document.write(htmlString);
+                            document.close();
                         }
                     };
                     xsl.send();
