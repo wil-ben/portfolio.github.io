@@ -165,14 +165,14 @@
         var xslFile = `cv_${lang}.xsl`;
 
         // Charger le fichier XML
-        var xhr = new XMLHttpRequest();
+        fetch(xmlFile)
         xhr.open('GET', xmlFile, true);
         xhr.onreadystatechange = function () {
         if (xhr.readyState == 4 && xhr.status == 200) {
             var xml = xhr.responseXML;
 
             // Charger le fichier XSL
-            var xsl = new XMLHttpRequest();
+            fetch(xslFile)
             xsl.open('GET', xslFile, true);
             xsl.onreadystatechange = function () {
                 if (xsl.readyState == 4 && xsl.status == 200) {
