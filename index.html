@@ -98,41 +98,44 @@
         let currentLang = 'fr';
 
         function showCV(lang = currentLang) {
-            var xmlFile = `cv_${lang}.xml`;
-            var xslFile = `cv_${lang}.xsl`;
+    var xmlFile = `cv_${lang}.xml`;
+    var xslFile = `cv_${lang}.xsl`;
 
-            // Charger le fichier XML
-            var xhr = new XMLHttpRequest();
-            xhr.open('GET', xmlFile, true);
-            xhr.onreadystatechange = function () {
-                if (xhr.readyState == 4 && xhr.status == 200) {
-                    var xml = xhr.responseXML;
+    // Charger le fichier XML
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', xmlFile, true);
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+            var xml = xhr.responseXML;
 
-                    // Charger le fichier XSL
-                    var xsl = new XMLHttpRequest();
-                    xsl.open('GET', xslFile, true);
-                    xsl.onreadystatechange = function () {
-                        if (xsl.readyState == 4 && xsl.status == 200) {
-                            var xslDoc = xsl.responseXML;
+            // Charger le fichier XSL
+            var xsl = new XMLHttpRequest();
+            xsl.open('GET', xslFile, true);
+            xsl.onreadystatechange = function () {
+                if (xsl.readyState == 4 && xsl.status == 200) {
+                    var xslDoc = xsl.responseXML;
 
-                            // Transformer le XML avec XSL
-                            var processor = new XSLTProcessor();
-                            processor.importStylesheet(xslDoc);
-                            var resultDocument = processor.transformToFragment(xml, document);
+                    // Transformer le XML avec XSL
+                    var processor = new XSLTProcessor();
+                    processor.importStylesheet(xslDoc);
+                    var resultDocument = processor.transformToFragment(xml, document);
 
-                            // Ajouter une entrée dans l'historique pour la page du CV
-                            history.pushState({page: 'cv', lang: lang}, 'CV de Wilhan Benrejdal', `cv_${lang}`);
+                    // Créer un nouvel élément div pour contenir le résultat transformé
+                    var cvContainer = document.createElement('div');
+                    cvContainer.appendChild(resultDocument);
 
-                            // Remplacer le contenu de la page par le CV
-                            document.body.innerHTML = '';
-                            document.body.appendChild(resultDocument);
-                        }
-                    };
-                    xsl.send();
+                    // Remplacer le contenu de la page par le CV transformé
+                    var mainContainer = document.querySelector('.container');
+                    mainContainer.innerHTML = ''; // Effacer le contenu existant
+                    mainContainer.appendChild(cvContainer);
                 }
             };
-            xhr.send();
+            xsl.send();
         }
+    };
+    xhr.send();
+}
+
 
         function changeLang(lang) {
             currentLang = lang;
