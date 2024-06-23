@@ -5,93 +5,56 @@
     <title>Portfolio de Wilhan Benrejdal</title>
     <style>
         body {
-            font-family: 'Helvetica Neue', Arial, sans-serif;
-            background-color: #f0f2f5;
-            margin: 0;
-            padding: 0;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
-            text-align: center;
+            height: 100vh;
+            background-color: #f8f9fa;
         }
         h1 {
             color: #333;
-            margin-bottom: 20px;
-            font-size: 36px;
-        }
-        p {
-            color: #555;
-            font-size: 18px;
-            margin-bottom: 30px;
-        }
-        .flags {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-bottom: 20px;
-        }
-        .flags img {
-            cursor: pointer;
-            width: 40px;
-            height: 30px;
-            transition: transform 0.2s;
-        }
-        .flags img:hover {
-            transform: scale(1.1);
         }
         button {
-            padding: 12px 25px;
-            font-size: 18px;
+            padding: 10px 20px;
+            font-size: 16px;
             cursor: pointer;
             background-color: #007bff;
             color: white;
             border: none;
-            border-radius: 5px;
+            border-radius: 4px;
             margin-top: 10px;
-            transition: background-color 0.3s;
         }
         button:hover {
             background-color: #0056b3;
         }
-        .container {
-            background: white;
-            padding: 40px 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            width: 80%;
-            max-width: 800px;
-            text-align: center;
-        }
-        .video-container {
-            margin-top: 30px;
+        .flags {
             display: flex;
             justify-content: center;
+            gap: 10px;
+            margin-bottom: 20px;
         }
-        iframe {
-            border: none;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        .flags img {
+            cursor: pointer;
+            width: 30px;
+            height: 20px;
         }
-        .contact-container {
-            margin-top: 40px;
-        }
-        .contact-icons {
+        .contact {
+            margin-top: 20px;
             display: flex;
             justify-content: center;
             gap: 20px;
         }
-        .contact-icons a {
-            text-decoration: none;
-        }
-        .contact-icons img {
+        .contact img {
             width: 40px;
             height: 40px;
-            transition: transform 0.2s;
+            cursor: pointer;
         }
-        .contact-icons img:hover {
-            transform: scale(1.1);
+        .contact img:hover {
+            opacity: 0.8;
         }
     </style>
     <script>
@@ -151,45 +114,30 @@
             var welcomeText = {
                 'fr': 'Bienvenue sur mon portfolio. Cliquez ci-dessous pour afficher mon CV :',
                 'en': 'Welcome to my portfolio. Click below to view my CV:',
-                'ja': '私のポートフォリオへようこそ。以下をクリックして私の履歴書をご覧ください。'
+                'ja': '私のポートフォリオへようこそ。以下をクリックして私の履歴書をご覧ください：'
             };
             var buttonText = {
                 'fr': 'Afficher le CV',
                 'en': 'View CV',
                 'ja': '履歴書を見る'
             };
-            var contactText = {
-                'fr': 'Contactez-moi:',
-                'en': 'Contact me:',
-                'ja': 'お問い合わせ:'
-            };
             document.title = titleText[currentLang];
             document.body.innerHTML = `
-                <div class="container">
-                    <div class="flags">
-                        <img src="fr.png" alt="Français" onclick="changeLang('fr')">
-                        <img src="en.png" alt="English" onclick="changeLang('en')">
-                        <img src="ja.png" alt="日本語" onclick="changeLang('ja')">
-                    </div>
-                    <h1>${titleText[currentLang]}</h1>
-                    <p>${welcomeText[currentLang]}</p>
-                    <button onclick="showCV()">${buttonText[currentLang]}</button>
-                    <div class="video-container">
-                        <iframe id="youtube-video" width="560" height="315" 
-                                src="https://www.youtube.com/embed/arj7oStGLkU?cc_lang_pref=${currentLang}&cc_load_policy=1" 
-                                title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    </div>
-                    <div class="contact-container">
-                        <h2>${contactText[currentLang]}</h2>
-                        <div class="contact-icons">
-                            <a href="https://github.com/wil-ben" target="_blank">
-                                <img src="github.png" alt="GitHub">
-                            </a>
-                            <a href="https://www.linkedin.com/in/wilhan-benrejdal-5529401a9/" target="_blank">
-                                <img src="linkedin.png" alt="LinkedIn">
-                            </a>
-                        </div>
-                    </div>
+                <div class="flags">
+                    <img src="fr.png" alt="Français" onclick="changeLang('fr')">
+                    <img src="en.png" alt="English" onclick="changeLang('en')">
+                    <img src="ja.png" alt="日本語" onclick="changeLang('ja')">
+                </div>
+                <h1>${titleText[currentLang]}</h1>
+                <p>${welcomeText[currentLang]}</p>
+                <button onclick="showCV()">${buttonText[currentLang]}</button>
+                <div class="contact">
+                    <a href="https://github.com/wil-ben" target="_blank">
+                        <img src="github.png" alt="GitHub">
+                    </a>
+                    <a href="https://www.linkedin.com/in/wilhan-benrejdal-5529401a9/" target="_blank">
+                        <img src="linkedin.png" alt="LinkedIn">
+                    </a>
                 </div>
             `;
         }
@@ -217,31 +165,21 @@
     </script>
 </head>
 <body>
-    <div class="container">
-        <div class="flags">
-            <img src="fr.png" alt="Français" onclick="changeLang('fr')">
-            <img src="en.png" alt="English" onclick="changeLang('en')">
-            <img src="ja.png" alt="日本語" onclick="changeLang('ja')">
-        </div>
-        <h1>Portfolio de Wilhan Benrejdal</h1>
-        <p>Bienvenue sur mon portfolio. Cliquez ci-dessous pour afficher mon CV :</p>
-        <button onclick="showCV()">Afficher le CV</button>
-        <div class="video-container">
-            <iframe id="youtube-video" width="560" height="315" 
-                    src="https://www.youtube.com/embed/arj7oStGLkU?cc_lang_pref=fr&cc_load_policy=1" 
-                    title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        </div>
-        <div class="contact-container">
-            <h2>Contactez-moi:</h2>
-            <div class="contact-icons">
-                <a href="https://github.com/wil-ben" target="_blank">
-                    <img src="github.png" alt="GitHub">
-                </a>
-                <a href="https://www.linkedin.com/in/wilhan-benrejdal-5529401a9/" target="_blank">
-                    <img src="linkedin.png" alt="LinkedIn">
-                </a>
-            </div>
-        </div>
+    <div class="flags">
+        <img src="fr.png" alt="Français" onclick="changeLang('fr')">
+        <img src="en.png" alt="English" onclick="changeLang('en')">
+        <img src="ja.png" alt="日本語" onclick="changeLang('ja')">
+    </div>
+    <h1>Portfolio de Wilhan Benrejdal</h1>
+    <p>Bienvenue sur mon portfolio. Cliquez ci-dessous pour afficher mon CV :</p>
+    <button onclick="showCV()">Afficher le CV</button>
+    <div class="contact">
+        <a href="https://github.com/wil-ben" target="_blank">
+            <img src="github.png" alt="GitHub">
+        </a>
+        <a href="https://www.linkedin.com/in/wilhan-benrejdal-5529401a9/" target="_blank">
+            <img src="linkedin.png" alt="LinkedIn">
+        </a>
     </div>
 </body>
 </html>
