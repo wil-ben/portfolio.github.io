@@ -8,6 +8,11 @@
             font-family: Arial, sans-serif;
             text-align: center;
             margin: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f8f9fa;
         }
         h1 {
             color: #333;
@@ -23,12 +28,6 @@
         }
         button:hover {
             background-color: #0056b3;
-        }
-        .cv-container {
-            margin-top: 30px;
-            border: 1px solid #ccc;
-            padding: 20px;
-            text-align: left;
         }
     </style>
     <script>
@@ -52,17 +51,17 @@
                             processor.importStylesheet(xslDoc);
                             var resultDocument = processor.transformToDocument(xml);
 
-                            // Sélectionner l'élément pour afficher le CV
-                            var cvContainer = document.getElementById('cv-container');
-
-                            // Effacer le contenu existant avant d'ajouter le nouveau CV
-                            cvContainer.innerHTML = '';
-
                             // Convertir le résultat en une chaîne de caractères HTML
                             var htmlString = new XMLSerializer().serializeToString(resultDocument);
 
-                            // Injecter le contenu du CV dans l'élément désigné
-                            cvContainer.innerHTML = htmlString;
+                            // Ouvrir le résultat dans une nouvelle fenêtre
+                            var newWindow = window.open();
+                            newWindow.document.write(htmlString);
+                            newWindow.document.title = 'CV de Wilhan Benrejdal';
+                            newWindow.document.close();
+
+                            // Masquer la page d'accueil
+                            document.body.style.display = 'none';
                         }
                     };
                     xsl.send();
@@ -76,6 +75,5 @@
     <h1>Portfolio de Wilhan Benrejdal</h1>
     <p>Bienvenue sur mon portfolio. Cliquez ci-dessous pour afficher mon CV :</p>
     <button onclick="showCV()">Afficher le CV</button>
-    <div id="cv-container" class="cv-container"></div>
 </body>
 </html>
