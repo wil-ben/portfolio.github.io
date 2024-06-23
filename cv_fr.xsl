@@ -3,11 +3,41 @@
     <xsl:template match="/">
         <html>
         <head>
-            <title>CV Wilhan Benrejdal</title>
+            <title>CV de Wilhan Benrejdal</title>
+            <style>
+                body {
+                    font-family: Arial, sans-serif;
+                    margin: 20px;
+                }
+                h1 {
+                    color: #333;
+                    text-align: center;
+                }
+                table {
+                    width: 100%;
+                    border-collapse: collapse;
+                    margin-bottom: 20px;
+                }
+                th, td {
+                    padding: 10px;
+                    text-align: left;
+                    border: 1px solid #ccc;
+                }
+                th {
+                    background-color: #f2f2f2;
+                }
+                a {
+                    color: #007bff;
+                    text-decoration: none;
+                }
+                a:hover {
+                    text-decoration: underline;
+                }
+            </style>
         </head>
         <body>
-            <h1>CV Wilhan Benrejdal</h1>
-            <table border="1">
+            <h1>CV de Wilhan Benrejdal</h1>
+            <table>
                 <tr>
                     <th colspan="2">Information Personnelle</th>
                 </tr>

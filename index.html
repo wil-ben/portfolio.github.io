@@ -27,12 +27,6 @@
     </style>
     <script>
         function showCV() {
-            // Créer un nouvel élément iframe pour afficher le CV
-            var iframe = document.createElement('iframe');
-            iframe.style.width = '100%';
-            iframe.style.height = '100%';
-            iframe.style.border = 'none';
-
             // Charger le fichier XML
             var xhr = new XMLHttpRequest();
             xhr.open('GET', 'cv_fr.xml', true);
@@ -52,9 +46,14 @@
                             processor.importStylesheet(xslDoc);
                             var resultDocument = processor.transformToDocument(xml);
 
-                            // Injecter le document transformé dans l'iframe
-                            iframe.srcdoc = new XMLSerializer().serializeToString(resultDocument);
-                            document.body.appendChild(iframe);
+                            // Convertir le résultat en une chaîne de caractères HTML
+                            var htmlString = new XMLSerializer().serializeToString(resultDocument);
+
+                            // Ouvrir le résultat dans un nouvel onglet
+                            var newWindow = window.open();
+                            newWindow.document.write(htmlString);
+                            newWindow.document.title = 'CV de Wilhan Benrejdal';
+                            newWindow.document.close();
                         }
                     };
                     xsl.send();
