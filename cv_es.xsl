@@ -43,11 +43,11 @@
                 </tr>
                 <tr>
                     <td>Nombre</td>
-                    <td><xsl:value-of select="cv/personnel/nombre"/></td>
+                    <td><xsl:value-of select="cv/personnel/nom"/></td>
                 </tr>
                 <tr>
                     <td>Teléfono</td>
-                    <td><xsl:value-of select="cv/personnel/telefono"/></td>
+                    <td><xsl:value-of select="cv/personnel/telephone"/></td>
                 </tr>
                 <tr>
                     <td>Email</td>
@@ -55,15 +55,15 @@
                 </tr>
                 <tr>
                     <td>Edad</td>
-                    <td><xsl:value-of select="cv/personnel/edad"/></td>
+                    <td><xsl:value-of select="cv/personnel/age"/></td>
                 </tr>
                 <tr>
                     <td>Dirección</td>
-                    <td><xsl:value-of select="cv/personnel/direccion"/></td>
+                    <td><xsl:value-of select="cv/personnel/adresse"/></td>
                 </tr>
                 <tr>
                     <td>Permiso de Conducir</td>
-                    <td><xsl:value-of select="cv/personnel/permiso"/></td>
+                    <td><xsl:value-of select="cv/personnel/permis"/></td>
                 </tr>
                 
                 <tr>
@@ -71,19 +71,19 @@
                 </tr>
                 <tr>
                     <td>Título</td>
-                    <td><xsl:value-of select="cv/objetivo/titulo"/></td>
+                    <td><xsl:value-of select="cv/objectif/titre"/></td>
                 </tr>
                 <tr>
                     <td>Contrato</td>
-                    <td><xsl:value-of select="cv/objetivo/contrato"/></td>
+                    <td><xsl:value-of select="cv/objectif/contrat"/></td>
                 </tr>
                 <tr>
                     <td>Ritmo</td>
-                    <td><xsl:value-of select="cv/objetivo/ritmo"/></td>
+                    <td><xsl:value-of select="cv/objectif/rythme"/></td>
                 </tr>
                 <tr>
                     <td>Disponibilidad</td>
-                    <td><xsl:value-of select="cv/objetivo/disponibilidad"/></td>
+                    <td><xsl:value-of select="cv/objectif/disponibilite"/></td>
                 </tr>
                 
                 <tr>
@@ -91,15 +91,15 @@
                 </tr>
                 <tr>
                     <td>Hard Skills</td>
-                    <td><xsl:value-of select="cv/competencias/hard"/></td>
+                    <td><xsl:value-of select="cv/competences/hard"/></td>
                 </tr>
                 <tr>
                     <td>Idiomas</td>
-                    <td><xsl:value-of select="cv/competencias/idiomas"/></td>
+                    <td><xsl:value-of select="cv/competences/langues"/></td>
                 </tr>
                 <tr>
                     <td>Soft Skills</td>
-                    <td><xsl:value-of select="cv/competencias/soft"/></td>
+                    <td><xsl:value-of select="cv/competences/soft"/></td>
                 </tr>
                 
                 <tr>
@@ -107,7 +107,7 @@
                 </tr>
                 <tr>
                     <td>Centros de Interés</td>
-                    <td><xsl:value-of select="cv/centros_interes/interes"/></td>
+                    <td><xsl:value-of select="cv/centres_interet/interet"/></td>
                 </tr>
                 
                 <tr>
