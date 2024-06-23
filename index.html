@@ -74,6 +74,25 @@
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
+        .contact-container {
+            margin-top: 40px;
+        }
+        .contact-icons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        .contact-icons a {
+            text-decoration: none;
+        }
+        .contact-icons img {
+            width: 40px;
+            height: 40px;
+            transition: transform 0.2s;
+        }
+        .contact-icons img:hover {
+            transform: scale(1.1);
+        }
     </style>
     <script>
         let currentLang = 'fr';
@@ -139,6 +158,11 @@
                 'en': 'View CV',
                 'ja': '履歴書を見る'
             };
+            var contactText = {
+                'fr': 'Contactez-moi:',
+                'en': 'Contact me:',
+                'ja': 'お問い合わせ:'
+            };
             document.title = titleText[currentLang];
             document.body.innerHTML = `
                 <div class="container">
@@ -154,6 +178,17 @@
                         <iframe id="youtube-video" width="560" height="315" 
                                 src="https://www.youtube.com/embed/arj7oStGLkU?cc_lang_pref=${currentLang}&cc_load_policy=1" 
                                 title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <div class="contact-container">
+                        <h2>${contactText[currentLang]}</h2>
+                        <div class="contact-icons">
+                            <a href="https://github.com/wbenrejdal" target="_blank">
+                                <img src="github.png" alt="GitHub">
+                            </a>
+                            <a href="https://www.linkedin.com/in/wilhan-benrejdal/" target="_blank">
+                                <img src="linkedin.png" alt="LinkedIn">
+                            </a>
+                        </div>
                     </div>
                 </div>
             `;
@@ -195,6 +230,17 @@
             <iframe id="youtube-video" width="560" height="315" 
                     src="https://www.youtube.com/embed/arj7oStGLkU?cc_lang_pref=fr&cc_load_policy=1" 
                     title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        <div class="contact-container">
+            <h2>Contactez-moi:</h2>
+            <div class="contact-icons">
+                <a href="https://github.com/wbenrejdal" target="_blank">
+                    <img src="github.png" alt="GitHub">
+                </a>
+                <a href="https://www.linkedin.com/in/wilhan-benrejdal/" target="_blank">
+                    <img src="linkedin.png" alt="LinkedIn">
+                </a>
+            </div>
         </div>
     </div>
 </body>
