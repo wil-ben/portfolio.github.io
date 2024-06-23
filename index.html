@@ -49,14 +49,14 @@
                             // Transformer le XML avec XSL
                             var processor = new XSLTProcessor();
                             processor.importStylesheet(xslDoc);
-                            var resultDocument = processor.transformToDocument(xml);
+                            var resultDocument = processor.transformToFragment(xml, document);
 
-                            // Convertir le résultat en une chaîne de caractères HTML
-                            var htmlString = new XMLSerializer().serializeToString(resultDocument);
+                            // Ajouter une entrée dans l'historique pour la page du CV
+                            history.pushState({page: 'cv'}, 'CV de Wilhan Benrejdal', 'cv');
 
-                            // Afficher le résultat dans la même fenêtre de navigation
-                            document.write(htmlString);
-                            document.close();
+                            // Remplacer le contenu de la page par le CV
+                            document.body.innerHTML = '';
+                            document.body.appendChild(resultDocument);
                         }
                     };
                     xsl.send();
@@ -64,6 +64,15 @@
             };
             xhr.send();
         }
+
+        // Gérer les changements d'état de l'historique
+        window.onpopstate = function(event) {
+            if (event.state && event.state.page === 'cv') {
+                showCV();
+            } else {
+                location.reload(); // Recharger la page d'accueil
+            }
+        };
     </script>
 </head>
 <body>
