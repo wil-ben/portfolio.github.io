@@ -42,6 +42,9 @@
             width: 30px;
             height: 20px;
         }
+        .video-container {
+            margin-top: 20px;
+        }
     </style>
     <script>
         let currentLang = 'fr';
@@ -102,6 +105,11 @@
                 'en': 'Welcome to my portfolio. Click below to view my CV:',
                 'es': 'Bienvenido a mi portafolio. Haga clic a continuación para ver mi CV:'
             };
+            var buttonText = {
+                'fr': 'Afficher le CV',
+                'en': 'View CV',
+                'es': 'Ver CV'
+            };
             document.title = titleText[currentLang];
             document.body.innerHTML = `
                 <div class="flags">
@@ -111,7 +119,10 @@
                 </div>
                 <h1>${titleText[currentLang]}</h1>
                 <p>${welcomeText[currentLang]}</p>
-                <button onclick="showCV()">Afficher le CV</button>
+                <button onclick="showCV()">${buttonText[currentLang]}</button>
+                <div class="video-container">
+                    <iframe id="youtube-video" width="560" height="315" src="https://www.youtube.com/watch?v=vt0i6nuqNEo?cc_lang_pref=${currentLang}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
             `;
         }
 
@@ -146,5 +157,8 @@
     <h1>Portfolio de Wilhan Benrejdal</h1>
     <p>Bienvenue sur mon portfolio. Cliquez ci-dessous pour afficher mon CV :</p>
     <button onclick="showCV()">Afficher le CV</button>
+    <div class="video-container">
+        <iframe id="youtube-video" width="560" height="315" src="https://www.youtube.com/watch?v=vt0i6nuqNEo?cc_lang_pref=fr" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
 </body>
 </html>
