@@ -161,46 +161,44 @@
 
     // Fonction pour afficher le CV en fonction de la langue donnée
     function showCV(lang) {
-        var xmlFile = `cv_${lang}.xml`;
-        var xslFile = `cv_${lang}.xsl`;
+    var xmlFile = `cv_${lang}.xml`;
+    var xslFile = `cv_${lang}.xsl`;
 
-        // Charger le fichier XML
-        fetch(xmlFile)
-        xhr.open('GET', xmlFile, true);
-        xhr.onreadystatechange = function () {
-        if (xhr.readyState == 4 && xhr.status == 200) {
-            var xml = xhr.responseXML;
-
+    // Charger le fichier XML
+    fetch(xmlFile)
+        .then(response => response.text())
+        .then(xml => {
             // Charger le fichier XSL
             fetch(xslFile)
-            xsl.open('GET', xslFile, true);
-            xsl.onreadystatechange = function () {
-                if (xsl.readyState == 4 && xsl.status == 200) {
-                    var xslDoc = xsl.responseXML;
-
+                .then(response => response.text())
+                .then(xsl => {
                     // Transformer le XML avec XSL
                     var processor = new XSLTProcessor();
+                    var parser = new DOMParser();
+
+                    var xslDoc = parser.parseFromString(xsl, 'application/xml');
                     processor.importStylesheet(xslDoc);
-                    var resultDocument = processor.transformToFragment(xml, document);
 
-                    // Créer un nouvel élément div pour contenir le résultat transformé
-                    var cvContainer = document.createElement('div');
-                    cvContainer.appendChild(resultDocument);
+                    var xmlDom = parser.parseFromString(xml, 'application/xml');
+                    var resultDocument = processor.transformToFragment(xmlDom, document);
 
-                    // Remplacer le contenu de la page par le CV transformé
+                    // Mettre à jour le contenu de la page avec le CV transformé
                     var mainContainer = document.querySelector('.container');
                     mainContainer.innerHTML = ''; // Effacer le contenu existant
-                    mainContainer.appendChild(cvContainer);
-                }
-            };
-            xsl.send();
-        }
-        };
-        xhr.send();
+                    mainContainer.appendChild(resultDocument);
 
-        // Mettre à jour l'état de l'historique pour la page du CV avec la langue actuelle
-        history.pushState({ page: 'cv', lang: lang }, 'CV de Wilhan Benrejdal', `cv_${lang}`);
-    }
+                    // Mettre à jour l'état de l'historique pour la page du CV avec la langue actuelle
+                    history.pushState({ page: 'cv', lang: lang }, 'CV de Wilhan Benrejdal', `?lang=${lang}`);
+                })
+                .catch(error => {
+                    console.error('Erreur lors du chargement du fichier XSL : ', error);
+                });
+        })
+        .catch(error => {
+            console.error('Erreur lors du chargement du fichier XML : ', error);
+        });
+}
+
 
     // Gérer les changements d'état de l'historique
     window.onpopstate = function (event) {
