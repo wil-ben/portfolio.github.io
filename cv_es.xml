@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cv>
+    <personnel>
+        <nom>Wilhan Benrejdal</nom>
+        <telefono>07 83 99 68 74</telefono>
+        <correo>w.benrejdal@gmail.com</correo>
+        <edad>21 años</edad>
+        <direccion>Aulnay-Sous-Bois (93600), Francia</direccion>
+        <licencia>Licencia de conducir B</licencia>
+    </personnel>
+    <objetivo>
+        <titulo>Ingeniero DevOps en alternancia</titulo>
+        <contrato>Contrato de aprendizaje</contrato>
+        <ritmo>Ritmo deseado</ritmo>
+        <disponibilidad>Disponibilidad inmediata</disponibilidad>
+    </objetivo>
+    <competencias>
+        <hard>Descripción de habilidades técnicas</hard>
+        <idiomas>Francés, Inglés</idiomas>
+        <soft>Descripción de habilidades blandas</soft>
+    </competencias>
+    <linkedin>
+        <url>https://www.linkedin.com/in/wilhan-benrejdal/</url>
+    </linkedin>
+    <centros_interes>
+        <interes>Deportes, Música</interes>
+    </centros_interes>
+</cv>

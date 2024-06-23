@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cv>
+    <personnel>
+        <nom>Wilhan Benrejdal</nom>
+        <telephone>07 83 99 68 74</telephone>
+        <email>w.benrejdal@gmail.com</email>
+        <age>21 years old</age>
+        <adresse>Aulnay-Sous-Bois (93600), France</adresse>
+        <permis>Driver's License B</permis>
+    </personnel>
+    <objectif>
+        <titre>DevOps Engineer in apprenticeship</titre>
+        <contrat>Apprenticeship contract</contrat>
+        <rythme>Desired rhythm</rythme>
+        <disponibilite>Immediate availability</disponibilite>
+    </objectif>
+    <competences>
+        <hard>Hard skills description</hard>
+        <langues>French, English</langues>
+        <soft>Soft skills description</soft>
+    </competences>
+    <linkedin>
+        <url>https://www.linkedin.com/in/wilhan-benrejdal/</url>
+    </linkedin>
+    <centres_interet>
+        <interet>Sports, Music</interet>
+    </centres_interet>
+</cv>

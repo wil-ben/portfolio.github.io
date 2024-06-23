@@ -9,6 +9,7 @@
             text-align: center;
             margin: 50px;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             height: 100vh;
@@ -25,23 +26,40 @@
             color: white;
             border: none;
             border-radius: 4px;
+            margin-top: 10px;
         }
         button:hover {
             background-color: #0056b3;
         }
+        .flags {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .flags img {
+            cursor: pointer;
+            width: 30px;
+            height: 20px;
+        }
     </style>
     <script>
-        function showCV() {
+        let currentLang = 'fr';
+
+        function showCV(lang = currentLang) {
+            var xmlFile = `cv_${lang}.xml`;
+            var xslFile = `cv_${lang}.xsl`;
+
             // Charger le fichier XML
             var xhr = new XMLHttpRequest();
-            xhr.open('GET', 'cv_fr.xml', true);
+            xhr.open('GET', xmlFile, true);
             xhr.onreadystatechange = function () {
                 if (xhr.readyState == 4 && xhr.status == 200) {
                     var xml = xhr.responseXML;
 
                     // Charger le fichier XSL
                     var xsl = new XMLHttpRequest();
-                    xsl.open('GET', 'cv_fr.xsl', true);
+                    xsl.open('GET', xslFile, true);
                     xsl.onreadystatechange = function () {
                         if (xsl.readyState == 4 && xsl.status == 200) {
                             var xslDoc = xsl.responseXML;
@@ -52,7 +70,7 @@
                             var resultDocument = processor.transformToFragment(xml, document);
 
                             // Ajouter une entrée dans l'historique pour la page du CV
-                            history.pushState({page: 'cv'}, 'CV de Wilhan Benrejdal', 'cv');
+                            history.pushState({page: 'cv', lang: lang}, 'CV de Wilhan Benrejdal', `cv_${lang}`);
 
                             // Remplacer le contenu de la page par le CV
                             document.body.innerHTML = '';
@@ -65,17 +83,66 @@
             xhr.send();
         }
 
+        function changeLang(lang) {
+            currentLang = lang;
+            // Recharger la page d'accueil avec la nouvelle langue
+            history.pushState({page: 'home', lang: lang}, 'Portfolio de Wilhan Benrejdal', `?lang=${lang}`);
+            loadHomePage();
+        }
+
+        function loadHomePage() {
+            // Remplacer le contenu de la page d'accueil en fonction de la langue actuelle
+            var titleText = {
+                'fr': 'Portfolio de Wilhan Benrejdal',
+                'en': 'Wilhan Benrejdal\'s Portfolio',
+                'es': 'Portafolio de Wilhan Benrejdal'
+            };
+            var welcomeText = {
+                'fr': 'Bienvenue sur mon portfolio. Cliquez ci-dessous pour afficher mon CV :',
+                'en': 'Welcome to my portfolio. Click below to view my CV:',
+                'es': 'Bienvenido a mi portafolio. Haga clic a continuación para ver mi CV:'
+            };
+            document.title = titleText[currentLang];
+            document.body.innerHTML = `
+                <div class="flags">
+                    <img src="fr.png" alt="Français" onclick="changeLang('fr')">
+                    <img src="en.png" alt="English" onclick="changeLang('en')">
+                    <img src="es.png" alt="Español" onclick="changeLang('es')">
+                </div>
+                <h1>${titleText[currentLang]}</h1>
+                <p>${welcomeText[currentLang]}</p>
+                <button onclick="showCV()">Afficher le CV</button>
+            `;
+        }
+
         // Gérer les changements d'état de l'historique
         window.onpopstate = function(event) {
             if (event.state && event.state.page === 'cv') {
-                showCV();
+                showCV(event.state.lang);
+            } else if (event.state && event.state.page === 'home') {
+                currentLang = event.state.lang;
+                loadHomePage();
             } else {
-                location.reload(); // Recharger la page d'accueil
+                loadHomePage();
             }
         };
+
+        // Charger la page d'accueil initiale
+        document.addEventListener("DOMContentLoaded", function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const lang = urlParams.get('lang') || 'fr';
+            currentLang = lang;
+            history.replaceState({page: 'home', lang: lang}, 'Portfolio de Wilhan Benrejdal', `?lang=${lang}`);
+            loadHomePage();
+        });
     </script>
 </head>
 <body>
+    <div class="flags">
+        <img src="fr.png" alt="Français" onclick="changeLang('fr')">
+        <img src="en.png" alt="English" onclick="changeLang('en')">
+        <img src="es.png" alt="Español" onclick="changeLang('es')">
+    </div>
     <h1>Portfolio de Wilhan Benrejdal</h1>
     <p>Bienvenue sur mon portfolio. Cliquez ci-dessous pour afficher mon CV :</p>
     <button onclick="showCV()">Afficher le CV</button>
