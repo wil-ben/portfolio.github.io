@@ -192,6 +192,10 @@
                     </div>
                 </div>
             `;
+            if (location.pathname.startsWith('/cv_')) {
+                var lang = location.pathname.substr(4, 2); // Extraire la langue du chemin de l'URL
+                showCV(lang); // Recharger le CV avec la langue appropriée
+            }
         }
 
         // Gérer les changements d'état de l'historique
