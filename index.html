@@ -97,6 +97,7 @@
     <script>
 
        // Fonction pour charger la page d'accueil en fonction de la langue actuelle
+   // Fonction pour charger la page d'accueil en fonction de la langue actuelle
 function loadHomePage() {
     const urlParams = new URLSearchParams(window.location.search);
     const lang = urlParams.get('lang') || 'fr'; // Langue par défaut est le français
@@ -191,15 +192,15 @@ function showCV(lang) {
                     var mainContainer = document.querySelector('.container');
                     mainContainer.innerHTML = ''; // Effacer le contenu existant
                     mainContainer.appendChild(cvContainer);
+
+                    // Mettre à jour l'état de l'historique pour la page du CV avec la langue actuelle
+                    history.pushState({ page: 'cv', lang: lang }, 'CV de Wilhan Benrejdal', `cv_${lang}`);
                 }
             };
             xsl.send();
         }
     };
     xhr.send();
-
-    // Mettre à jour l'état de l'historique pour la page du CV avec la langue actuelle
-    history.pushState({ page: 'cv', lang: lang }, 'CV de Wilhan Benrejdal', `cv_${lang}`);
 }
 
 // Gérer les changements d'état de l'historique
@@ -215,12 +216,18 @@ window.onpopstate = function (event) {
 document.addEventListener("DOMContentLoaded", function () {
     // Si l'URL contient un paramètre de langue, utiliser cette langue
     if (window.location.search.includes('lang=')) {
-        loadHomePage();
+        var urlParams = new URLSearchParams(window.location.search);
+        var lang = urlParams.get('lang');
+        if (lang) {
+            showCV(lang); // Charger le CV si la langue est spécifiée
+        } else {
+            loadHomePage(); // Sinon, charger la page d'accueil par défaut
+        }
     } else {
-        // Sinon, utiliser la langue par défaut
-        loadHomePage();
+        loadHomePage(); // Aucun paramètre de langue trouvé, charger la page d'accueil par défaut
     }
 });
+
 
         function changeLang(lang) {
             currentLang = lang;
