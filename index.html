@@ -216,7 +216,7 @@
         // Charger la page d'accueil initiale
         document.addEventListener("DOMContentLoaded", function() {
             const urlParams = new URLSearchParams(window.location.search);
-            const lang = urlParams.get('lang') || 'fr';
+            const lang = urlParams.get('lang');
             currentLang = lang;
             history.replaceState({page: 'home', lang: lang}, 'Portfolio de Wilhan Benrejdal', `?lang=${lang}`);
             loadHomePage();
