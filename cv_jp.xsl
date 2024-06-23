@@ -39,74 +39,74 @@
             <h1>CV de Wilhan Benrejdal</h1>
             <table>
                 <tr>
-                    <th colspan="2">Información Personal</th>
+                    <th colspan="2">個人情報</th>
                 </tr>
                 <tr>
-                    <td>Nombre</td>
+                    <td>名前</td>
                     <td><xsl:value-of select="cv/personnel/nom"/></td>
                 </tr>
                 <tr>
-                    <td>Teléfono</td>
+                    <td>電話番号</td>
                     <td><xsl:value-of select="cv/personnel/telephone"/></td>
                 </tr>
                 <tr>
-                    <td>Email</td>
+                    <td>メール</td>
                     <td><xsl:value-of select="cv/personnel/email"/></td>
                 </tr>
                 <tr>
-                    <td>Edad</td>
+                    <td>年齢</td>
                     <td><xsl:value-of select="cv/personnel/age"/></td>
                 </tr>
                 <tr>
-                    <td>Dirección</td>
+                    <td>住所</td>
                     <td><xsl:value-of select="cv/personnel/adresse"/></td>
                 </tr>
                 <tr>
-                    <td>Permiso de Conducir</td>
+                    <td>運転免許証</td>
                     <td><xsl:value-of select="cv/personnel/permis"/></td>
                 </tr>
                 
                 <tr>
-                    <th colspan="2">Objetivo</th>
+                    <th colspan="2">目標</th>
                 </tr>
                 <tr>
-                    <td>Título</td>
+                    <td>タイトル</td>
                     <td><xsl:value-of select="cv/objectif/titre"/></td>
                 </tr>
                 <tr>
-                    <td>Contrato</td>
+                    <td>契約</td>
                     <td><xsl:value-of select="cv/objectif/contrat"/></td>
                 </tr>
                 <tr>
-                    <td>Ritmo</td>
+                    <td>リズム</td>
                     <td><xsl:value-of select="cv/objectif/rythme"/></td>
                 </tr>
                 <tr>
-                    <td>Disponibilidad</td>
+                    <td>利用可能性</td>
                     <td><xsl:value-of select="cv/objectif/disponibilite"/></td>
                 </tr>
                 
                 <tr>
-                    <th colspan="2">Competencias</th>
+                    <th colspan="2">スキル</th>
                 </tr>
                 <tr>
-                    <td>Hard Skills</td>
+                    <td>ハードスキル</td>
                     <td><xsl:value-of select="cv/competences/hard"/></td>
                 </tr>
                 <tr>
-                    <td>Idiomas</td>
+                    <td>言語</td>
                     <td><xsl:value-of select="cv/competences/langues"/></td>
                 </tr>
                 <tr>
-                    <td>Soft Skills</td>
+                    <td>ソフトスキル</td>
                     <td><xsl:value-of select="cv/competences/soft"/></td>
                 </tr>
                 
                 <tr>
-                    <th colspan="2">Centros de Interés</th>
+                    <th colspan="2">趣味</th>
                 </tr>
                 <tr>
-                    <td>Centros de Interés</td>
+                    <td>趣味</td>
                     <td><xsl:value-of select="cv/centres_interet/interet"/></td>
                 </tr>
                 

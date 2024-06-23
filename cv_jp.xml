@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cv>
+    <personnel>
+        <nom>ウィルハン・ベンレジダル</nom>
+        <telephone>07 83 99 68 74</telephone>
+        <email>w.benrejdal@gmail.com</email>
+        <age>21歳</age>
+        <adresse>フランス、オルネー＝スー＝ボワ（93600）</adresse>
+        <permis>運転免許B</permis>
+    </personnel>
+    <objectif>
+        <titre>デブオプスエンジニア（インターンシップ）</titre>
+        <contrat>学徒契約</contrat>
+        <rythme>希望するリズム</rythme>
+        <disponibilite>即時の可用性</disponibilite>
+    </objectif>
+    <competences>
+        <hard>技術的スキルの説明</hard>
+        <langues>フランス語、英語</langues>
+        <soft>ソフトスキルの説明</soft>
+    </competences>
+    <linkedin>
+        <url>https://www.linkedin.com/in/wilhan-benrejdal/</url>
+    </linkedin>
+    <centres_interet>
+        <interet>スポーツ、音楽</interet>
+    </centres_interet>
+</cv>
