@@ -97,7 +97,7 @@
     <script>
 
        // Fonction pour charger la page d'accueil en fonction de la langue actuelle
-   // Fonction pour charger la page d'accueil en fonction de la langue actuelle
+    // Fonction pour charger la page d'accueil en fonction de la langue actuelle
 function loadHomePage() {
     const urlParams = new URLSearchParams(window.location.search);
     const lang = urlParams.get('lang') || 'fr'; // Langue par défaut est le français
@@ -194,7 +194,7 @@ function showCV(lang) {
                     mainContainer.appendChild(cvContainer);
 
                     // Mettre à jour l'état de l'historique pour la page du CV avec la langue actuelle
-                    history.pushState({ page: 'cv', lang: lang }, 'CV de Wilhan Benrejdal', `cv_${lang}`);
+                    history.pushState({ page: 'cv', lang: lang }, 'CV de Wilhan Benrejdal', `?lang=${lang}`);
                 }
             };
             xsl.send();
@@ -206,7 +206,8 @@ function showCV(lang) {
 // Gérer les changements d'état de l'historique
 window.onpopstate = function (event) {
     if (event.state && event.state.page === 'cv') {
-        showCV(event.state.lang); // Recharger la page du CV avec la langue précédente
+        var lang = event.state.lang || 'fr'; // Langue par défaut si l'état ne contient pas de langue
+        showCV(lang); // Recharger la page du CV avec la langue précédente
     } else {
         loadHomePage(); // Charger la page d'accueil par défaut
     }
@@ -214,14 +215,14 @@ window.onpopstate = function (event) {
 
 // Charger la page d'accueil initiale lors du chargement du document
 document.addEventListener("DOMContentLoaded", function () {
-    // Si l'URL contient un paramètre de langue, utiliser cette langue
+    // Si l'URL contient un paramètre de langue, utiliser cette langue pour charger le CV
     if (window.location.search.includes('lang=')) {
         var urlParams = new URLSearchParams(window.location.search);
         var lang = urlParams.get('lang');
         if (lang) {
-            showCV(lang); // Charger le CV si la langue est spécifiée
+            showCV(lang); // Charger le CV avec la langue spécifiée dans l'URL
         } else {
-            loadHomePage(); // Sinon, charger la page d'accueil par défaut
+            loadHomePage(); // Aucune langue spécifiée, charger la page d'accueil par défaut
         }
     } else {
         loadHomePage(); // Aucun paramètre de langue trouvé, charger la page d'accueil par défaut
