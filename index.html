@@ -95,73 +95,11 @@
         }
     </style>
     <script>
-       // Fonction pour charger la page d'accueil en fonction de la langue actuelle
-function loadHomePage() {
-    const urlParams = new URLSearchParams(window.location.search);
-    const lang = urlParams.get('lang') || 'fr'; // Langue par défaut est le français
+        let currentLang = 'fr';
 
-    // Définir le titre et le contenu en fonction de la langue actuelle
-    var titleText = {
-        'fr': 'Portfolio de Wilhan Benrejdal',
-        'en': 'Wilhan Benrejdal\'s Portfolio',
-        'ja': 'ウィルハン・ベンレジダルのポートフォリオ'
-    };
-    var welcomeText = {
-        'fr': 'Bienvenue sur mon portfolio. Cliquez ci-dessous pour afficher mon CV :',
-        'en': 'Welcome to my portfolio. Click below to view my CV:',
-        'ja': '私のポートフォリオへようこそ。以下をクリックして私の履歴書をご覧ください。'
-    };
-    var buttonText = {
-        'fr': 'Afficher le CV',
-        'en': 'View CV',
-        'ja': '履歴書を見る'
-    };
-    var contactText = {
-        'fr': 'Contactez-moi:',
-        'en': 'Contact me:',
-        'ja': 'お問い合わせ:'
-    };
-
-    // Mettre à jour le titre de la page
-    document.title = titleText[lang];
-
-    // Mettre à jour le contenu de la page d'accueil
-    var mainContainer = document.querySelector('.container');
-    mainContainer.innerHTML = `
-        <div class="flags">
-            <img src="fr.png" alt="Français" onclick="changeLang('fr')">
-            <img src="en.png" alt="English" onclick="changeLang('en')">
-            <img src="ja.png" alt="日本語" onclick="changeLang('ja')">
-        </div>
-        <h1>${titleText[lang]}</h1>
-        <p>${welcomeText[lang]}</p>
-        <button onclick="showCV('${lang}')">${buttonText[lang]}</button>
-        <div class="video-container">
-            <iframe id="youtube-video" width="560" height="315" 
-                    src="https://www.youtube.com/embed/arj7oStGLkU?cc_lang_pref=${lang}&cc_load_policy=1" 
-                    title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        </div>
-        <div class="contact-container">
-            <h2>${contactText[lang]}</h2>
-            <div class="contact-icons">
-                <a href="https://github.com/wil-ben" target="_blank">
-                    <img src="github.png" alt="GitHub">
-                </a>
-                <a href="https://www.linkedin.com/in/wilhan-benrejdal-5529401a9/" target="_blank">
-                    <img src="linkedin.png" alt="LinkedIn">
-                </a>
-            </div>
-        </div>
-    `;
-
-    // Mettre à jour l'état de l'historique pour la page d'accueil avec la langue actuelle
-    history.replaceState({ page: 'home', lang: lang }, titleText[lang], `?lang=${lang}`);
-}
-
-// Fonction pour afficher le CV en fonction de la langue donnée
-function showCV(lang) {
-    var xmlFile = `cv_${lang}.xml`;
-    var xslFile = `cv_${lang}.xsl`;
+        function showCV(lang = currentLang) {
+            var xmlFile = `cv_${lang}.xml`;
+            var xslFile = `cv_${lang}.xsl`;
 
     // Charger le fichier XML
     var xhr = new XMLHttpRequest();
@@ -196,25 +134,93 @@ function showCV(lang) {
         }
     };
     xhr.send();
-
-    // Mettre à jour l'état de l'historique pour la page du CV avec la langue actuelle
-    history.pushState({ page: 'cv', lang: lang }, 'CV de Wilhan Benrejdal', `cv_${lang}`);
 }
 
-// Gérer les changements d'état de l'historique
-window.onpopstate = function (event) {
-    if (event.state && event.state.page === 'cv') {
-        showCV(event.state.lang); // Recharger la page du CV avec la langue précédente
-    } else {
-        loadHomePage(); // Charger la page d'accueil par défaut
-    }
-};
 
-// Charger la page d'accueil initiale lors du chargement du document
-document.addEventListener("DOMContentLoaded", function () {
-    loadHomePage(); // Charger la page d'accueil avec la langue actuelle
-});
+        function changeLang(lang) {
+            currentLang = lang;
+            // Recharger la page d'accueil avec la nouvelle langue
+            history.pushState({page: 'home', lang: lang}, 'Portfolio de Wilhan Benrejdal', `?lang=${lang}`);
+            loadHomePage();
+        }
 
+        function loadHomePage() {
+            // Remplacer le contenu de la page d'accueil en fonction de la langue actuelle
+            var titleText = {
+                'fr': 'Portfolio de Wilhan Benrejdal',
+                'en': 'Wilhan Benrejdal\'s Portfolio',
+                'ja': 'ウィルハン・ベンレジダルのポートフォリオ'
+            };
+            var welcomeText = {
+                'fr': 'Bienvenue sur mon portfolio. Cliquez ci-dessous pour afficher mon CV :',
+                'en': 'Welcome to my portfolio. Click below to view my CV:',
+                'ja': '私のポートフォリオへようこそ。以下をクリックして私の履歴書をご覧ください。'
+            };
+            var buttonText = {
+                'fr': 'Afficher le CV',
+                'en': 'View CV',
+                'ja': '履歴書を見る'
+            };
+            var contactText = {
+                'fr': 'Contactez-moi:',
+                'en': 'Contact me:',
+                'ja': 'お問い合わせ:'
+            };
+            document.title = titleText[currentLang];
+            document.body.innerHTML = `
+                <div class="container">
+                    <div class="flags">
+                        <img src="fr.png" alt="Français" onclick="changeLang('fr')">
+                        <img src="en.png" alt="English" onclick="changeLang('en')">
+                        <img src="ja.png" alt="日本語" onclick="changeLang('ja')">
+                    </div>
+                    <h1>${titleText[currentLang]}</h1>
+                    <p>${welcomeText[currentLang]}</p>
+                    <button onclick="showCV()">${buttonText[currentLang]}</button>
+                    <div class="video-container">
+                        <iframe id="youtube-video" width="560" height="315" 
+                                src="https://www.youtube.com/embed/arj7oStGLkU?cc_lang_pref=${currentLang}&cc_load_policy=1" 
+                                title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <div class="contact-container">
+                        <h2>${contactText[currentLang]}</h2>
+                        <div class="contact-icons">
+                            <a href="https://github.com/wil-ben" target="_blank">
+                                <img src="github.png" alt="GitHub">
+                            </a>
+                            <a href="https://www.linkedin.com/in/wilhan-benrejdal-5529401a9/" target="_blank">
+                                <img src="linkedin.png" alt="LinkedIn">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            `;
+            if (location.pathname.startsWith('/cv_')) {
+                var lang = location.pathname.substr(4, 2); // Extraire la langue du chemin de l'URL
+                showCV(lang); // Recharger le CV avec la langue appropriée
+            }
+        }
+
+        // Gérer les changements d'état de l'historique
+        window.onpopstate = function(event) {
+            if (event.state && event.state.page === 'cv') {
+                showCV(event.state.lang);
+            } else if (event.state && event.state.page === 'home') {
+                currentLang = event.state.lang;
+                loadHomePage();
+            } else {
+                loadHomePage();
+            }
+        };
+
+        // Charger la page d'accueil initiale
+        document.addEventListener("DOMContentLoaded", function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const lang = urlParams.get('lang') || 'fr';
+            currentLang = lang;
+            history.replaceState({page: 'home', lang: lang}, 'Portfolio de Wilhan Benrejdal', `?lang=${lang}`);
+            loadHomePage();
+        });
     </script>
 </head>
 <body>
